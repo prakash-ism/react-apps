@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import SearchBox from '../SearchBox/SearchBox';
 import ResultsContainer from '../ResultsContainer/ResultsContainer';
@@ -11,11 +11,20 @@ function App() {
   const [headerTitle,setHeaderTitle] = useState("Name It!");
   const [headerExpanded,setHeaderExpanded] = useState(true);
   const [suggestedNames,setSuggestedNames] = useState([]);
+  const [inputValue,setInputValue] = useState("");
 
   const handleInputChange = (inputText) => {
     setHeaderExpanded(!inputText);
-    setSuggestedNames(inputText ? name(inputText) : []);
+    setInputValue(inputText);
   }
+
+  useEffect(() => {
+    const getSuggestedNames = setTimeout(() => {
+      setSuggestedNames(inputValue ? name(inputValue) : []);
+    },2000);
+
+    return () => clearTimeout(getSuggestedNames);
+  },[inputValue]);
 
   return (
     <div >
