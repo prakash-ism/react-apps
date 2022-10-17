@@ -9,7 +9,7 @@ const NameCard = ({ suggestedName }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="card-link" href={`${nameCheapUrl}${suggestedName}`}>
-            <div className="result-name-card">
+            <div className="result-name-card" data-testid="test-div">
                 <p className="result-name">{suggestedName}</p>
             </div>
         </a>
