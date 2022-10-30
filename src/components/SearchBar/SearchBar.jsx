@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./SearchBar.css"
 
-const SearchBar = () => {
-
-    const [inputValue, setInputValue] = useState("");
+const SearchBar = ({ searchValue, setSearchValue }) => {
 
     return (
         <div className='searchbar-container'>
             <input
                 className='search-input'
-                value={inputValue}
+                value={searchValue}
                 placeholder={`Search by name, email or role`}
-                onChange={(e) => setInputValue(e.target.value)} // Use debounce here on the search
+                onChange={(e) => setSearchValue(e.target.value)} // Use debounce here on the search
             />
         </div>
     )

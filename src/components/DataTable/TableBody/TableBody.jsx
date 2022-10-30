@@ -2,10 +2,12 @@ import React from "react";
 import deleteLogo from "../../../assets/images/deleteLogo.svg";
 import editLogo from "../../../assets/images/editLogo.svg";
 
-const TableBody = ({ data, handleOnChange, checkedState }) => {
+const TableBody = ({ data, handleOnChange, checkedState, deleteSingle }) => {
+
     return (
         <tbody>
-            {data.map((row) => {
+            {data.map((row, key) => {
+
                 return (
                     <tr key={row.id} className="table-row">
                         <td className="table-data">
@@ -33,7 +35,7 @@ const TableBody = ({ data, handleOnChange, checkedState }) => {
                         </td>
                         <td className="table-data">
                             <span><img src={editLogo} alt="edit icon" /></span>
-                            <span><img src={deleteLogo} alt="delete icon" /></span>
+                            <span onClick={() => deleteSingle(row.id)}><img src={deleteLogo} alt="delete icon" /></span>
                         </td>
                     </tr>
                 )
