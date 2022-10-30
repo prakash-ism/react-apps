@@ -23,7 +23,6 @@ useEffect(() => {
   fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
   .then(response => response.json())
   .then(data => {
-    console.log(data)
     setData(data);
     setFilteredData(data);
     setCheckedState(new Array(data.length).fill(false));
@@ -73,17 +72,12 @@ const deleteSelected = () => {
 }
 
 const deleteSingle = (id) => {
-  console.log("*",id);
-  // let newCheckedState = checkedState;
-  // newCheckedState[id-1] = true;
-  // setCheckedState(newCheckedState);
-
   let newData = filteredData.filter((ele) => ele.id !== id);
   setFilteredData(newData);
 }
 
   return (
-    <div className="App">
+    <div className="App" data-testid="app-div">
       <SearchBar
         searchValue={searchValue}
         setSearchValue={setSearchValue} 

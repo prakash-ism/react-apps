@@ -6,8 +6,7 @@ const TableBody = ({ data, handleOnChange, checkedState, deleteSingle }) => {
 
     return (
         <tbody>
-            {data.map((row, key) => {
-
+            {data.map((row) => {
                 return (
                     <tr key={row.id} className="table-row">
                         <td className="table-data">
