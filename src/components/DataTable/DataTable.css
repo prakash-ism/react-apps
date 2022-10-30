@@ -1,0 +1,34 @@
+.datatable-container {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.visuallyhidden {
+    display: none;
+}
+
+.table-row {
+    height: 3rem;
+    border: solid;
+    border-width: 1px 0;
+}
+
+.table-row:first-child {
+    border-top: none;
+}
+
+
+.table-head {
+    width: 20%;
+    text-align: center;
+}
+
+.table-data {
+    width: 20%;
+    text-align: center;
+}

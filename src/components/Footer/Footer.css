@@ -1,0 +1,19 @@
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 100%;
+}
+
+.multi-select-button-container {
+    width: 20%;
+}
+
+.delete-button {
+    background-color: #f50057;
+    padding: 0.4rem;
+    border-radius: 15px;
+    color: #e6e7e6;
+    border: none;
+}
