@@ -1,9 +1,10 @@
 import React from "react";
-import { screen, render } from "@testing-library/react";
+import { screen, render, act } from "@testing-library/react";
 import TableBody from "./TableBody";
+import userEvent from "@testing-library/user-event";
 
 describe("TableBody component", () => {
-    test("renders correctly", () => {
+    test("renders correctly", async () => {
         const data = [
             {
               "id": "1",
@@ -25,14 +26,28 @@ describe("TableBody component", () => {
             }
           ];
     
-          const checkedState = [false,false,false];
+        const checkedState = [true,false,false];
     
-          const handleOnChange = jest.fn();
-          const deleteSingle = jest.fn();
+        const handleOnChange = jest.fn();
+        const deleteSingle = jest.fn();
     
         render(<TableBody data={data} checkedState={checkedState} handleOnChange={handleOnChange} deleteSingle={deleteSingle} />);
     
         const tableRowElement = screen.getAllByRole('row');
         expect(tableRowElement.length).toBe(3);
+
+        const inputElement = screen.getAllByRole('checkbox', { name : /Click to select this checkbox/i });
+
+        expect(inputElement[0]).toBeChecked();
+
+
+        act(() => {
+          userEvent.click(inputElement[0]);
+          userEvent.click(inputElement[1]);
+          userEvent.click(inputElement[2]);
+        });
+
+        expect(handleOnChange).toHaveBeenCalledTimes(3);
+
     })
 })
