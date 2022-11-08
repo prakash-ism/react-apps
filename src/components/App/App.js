@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from 'react';
+import React , { useCallback, useEffect, useState } from 'react';
 import DataTable from '../DataTable/DataTable';
 import SearchBar from '../SearchBar/SearchBar';
 import Footer from "../Footer/Footer"
@@ -17,8 +17,6 @@ const App = () => {
 
   const [page,selectPage] = useState(1);
 
-  const [searchValue, setSearchValue] = useState("");
-
 useEffect(() => {
   fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
   .then(response => response.json())
@@ -35,14 +33,6 @@ useEffect(() => {
 
   setCurPageData(newCurPageData);
 },[filteredData,page]);
-
-useEffect(() => {
-  let newData = data.filter((ele) => {
-    return (ele.name.includes(searchValue) || ele.role.includes(searchValue) || ele.email.includes(searchValue))
-  });
-
-  setFilteredData(newData);
-}, [searchValue]);
 
 const handleOnChange = (position) => {
 
@@ -76,11 +66,15 @@ const deleteSingle = (id) => {
   setFilteredData(newData);
 }
 
+const changeFilteredData = useCallback((newData) => {
+  setFilteredData(newData);
+},[]);
+
   return (
     <div className="App" data-testid="app-div">
       <SearchBar
-        searchValue={searchValue}
-        setSearchValue={setSearchValue} 
+        data={data}
+        changeFilteredData={changeFilteredData}
       />
       <DataTable 
         data={curPageData} 

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./SearchBar.css"
 
-const SearchBar = ({ searchValue, setSearchValue }) => {
+const SearchBar = ({ data, changeFilteredData }) => {
+
+    const [searchValue, setSearchValue] = useState("");
+
+    useEffect(() => {
+        let newData = data.filter((ele) => {
+          return (ele.name.includes(searchValue) || ele.role.includes(searchValue) || ele.email.includes(searchValue))
+        });
+      
+        changeFilteredData(newData);
+      }, [data,searchValue,changeFilteredData]);
 
     return (
         <div className='searchbar-container'>
