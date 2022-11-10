@@ -85,6 +85,9 @@ const App = () => {
 
   const handleOnSave = (id, modifiedData) => {
     let newCurPageData = [...curPageData];
+    modifiedData.name = modifiedData.name || newCurPageData[id - 1].name;
+    modifiedData.email = modifiedData.email || newCurPageData[id - 1].email;
+    modifiedData.role = modifiedData.role || newCurPageData[id - 1].role;
     newCurPageData[id - 1] = modifiedData;
     setCurPageData(newCurPageData);
     handleOnEditClick(id - 1);

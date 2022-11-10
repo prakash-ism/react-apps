@@ -64,7 +64,7 @@ const TableBody = ({ data, handleOnChange, checkedState, deleteSingle,editState,
                         </td>
                         <td className="table-data">
                             {editState[row.id-1] ?
-                                <span onClick={() => handleOnSave(row.id, { id: row.id, name, email, role })}><img src={saveLogo} alt="edit icon" /></span>
+                                <span onClick={() => handleOnSave(row.id, { id: row.id, name, email, role })}><img src={saveLogo} alt="save icon" /></span>
                             : 
                             <>
                                 <span onClick={() => handleOnEditClick(row.id -1 )}><img src={editLogo} alt="edit icon" /></span>
