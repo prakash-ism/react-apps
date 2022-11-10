@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import deleteLogo from "../../../assets/images/deleteLogo.svg";
 import editLogo from "../../../assets/images/editLogo.svg";
 import saveLogo from "../../../assets/images/saveLogo.svg";
+import "./TableBody.css";
 
 const TableBody = ({ data, handleOnChange, checkedState, deleteSingle,editState, handleOnEditClick, handleOnSave }) => {
 
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [role,setRole] = useState("");
-
+    
     return (
         <tbody>
             {data.map((row) => {
                 return (
-                    <tr key={row.id} className="table-row">
+                    <tr key={row.id} className={checkedState[row.id - 1] ? "table-row checked" : "table-row"}>
                         <td className="table-data">
                             <label
                                 htmlFor={row.id}
