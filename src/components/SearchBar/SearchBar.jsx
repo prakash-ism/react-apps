@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import "./SearchBar.css"
 
-const SearchBar = ({ data, changeFilteredData }) => {
+const SearchBar = ({ data,setFilteredData }) => {
 
     const [searchValue, setSearchValue] = useState("");
+
+    const changeFilteredData = useCallback(newData => {
+        setFilteredData(newData);
+      }, [setFilteredData]);
 
     useEffect(() => {
         let newData = data.filter((ele) => {
