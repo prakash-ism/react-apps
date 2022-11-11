@@ -22,18 +22,6 @@ const DataTable = ({ data, setFilteredData }) => {
     setEditState(new Array(data.length).fill(false));
   }, [data, page, setCheckedState]);
 
-  const handleAllCheck = () => {
-    setCheckAll(!checkAll);
-
-    let newCheckedState = checkedState;
-
-    curPageData.forEach(
-      element => (newCheckedState[element.id - 1] = !checkAll)
-    );
-
-    setCheckedState(newCheckedState);
-  };
-
   const handleOnChange = position => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
@@ -77,7 +65,13 @@ const DataTable = ({ data, setFilteredData }) => {
     <div className="datatable-container">
       <>
         <table className="data-table">
-          <TableHeader checkAll={checkAll} handleAllCheck={handleAllCheck} />
+          <TableHeader
+            checkAll={checkAll}
+            setCheckAll={setCheckAll}
+            checkedState={checkedState}
+            curPageData={curPageData}
+            setCheckedState={setCheckedState}
+          />
           <TableBody
             data={curPageData}
             handleOnChange={handleOnChange}
