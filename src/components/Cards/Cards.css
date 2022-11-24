@@ -1,0 +1,29 @@
+.cards-container{
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 4px #0000000A;
+    border-radius: 14px;
+    opacity: 1;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.card-type {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    font: normal normal bold 14px/16px Arial;
+    letter-spacing: 0px;
+    color: #0091FF;
+    opacity: 1;
+}
+
+.card-description {
+    text-align: left;
+    font: normal normal bold 18px/24px Arial;
+    letter-spacing: 0px;
+    color: #0F0F0F;
+    opacity: 1;
+    padding-top: 0.5rem;
+}
