@@ -1,14 +1,19 @@
 import React from "react";
 import "./Cards.css";
 
-const Cards = () => {
+const Cards = ({card, onDragEnter, onDragEnd, boardId}) => {
     return (
-        <div className="cards-container">
+        <div 
+            className="cards-container"
+            onDragEnter={() => onDragEnter(boardId,card.id)}
+            onDragEnd={() => onDragEnd(boardId,card.id)}
+            draggable
+        >
             <div className="card-type">
-                <span>Feature</span>
+                <span>{card.title}</span>
                 <span>x</span>
             </div>
-            <div className="card-description">Add real time chat widget to the dashboard</div>
+            <div className="card-description">{card.description}</div>
         </div>
     )
 }
