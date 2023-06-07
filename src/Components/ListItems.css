@@ -1,0 +1,11 @@
+.dropdown-menu-custom{
+    width: 100%;
+}
+
+.dropdown-item-custom{
+    list-style: none;
+}
+
+.dropdown-item-custom:hover{
+    background-color: gray;
+}
