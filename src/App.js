@@ -3,7 +3,7 @@ import Demo from "./Components/DemoComponent/Demo";
 
 function App() {
   return (
-    <div className="App p-2">
+    <div className="App">
       <Demo />
     </div>
   );
